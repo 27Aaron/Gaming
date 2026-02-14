@@ -33,6 +33,24 @@
     decky-loader.enable = true;
   };
 
+  programs.steam = {
+    enable = true;
+    package = pkgs.steam.override {
+      extraPkgs =
+        pkgs: with pkgs; [
+          liberation_ttf
+          wqy_zenhei
+        ];
+      extraLibraries = pkgs: [ pkgs.xorg.libxcb ];
+    };
+    extest.enable = true;
+    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+  };
+
+  jovian.steam.environment = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${pkgs.proton-ge-bin.steamcompattool}";
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot.initrd.systemd.enable = true;
   boot.loader.systemd-boot.enable = true;
