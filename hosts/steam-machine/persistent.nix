@@ -3,6 +3,8 @@
     preserveAt."/persistent" = {
       users.aaron = {
         directories = [
+          ".steam"
+
           ".cache/mesa_shader_cache"
           ".cache/radv_builtin_shaders"
           ".cache/ibus"
