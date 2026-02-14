@@ -1,11 +1,15 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 
 {
   imports = [
     # Include the results of the hardware scan.
+    inputs.disko.nixosModules.default
+    inputs.jovian.nixosModules.default
+
     ./disko.nix
     ./persistent.nix
     ./hardware-configuration.nix

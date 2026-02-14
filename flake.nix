@@ -17,16 +17,16 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    inputs@{
+      self,
+      nixpkgs,
+      ...
+    }:
+    let
+      inherit (nixpkgs) lib;
+    in
     {
-      nixosConfigurations.steam-machine = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/steam-machine/configuration.nix
-          inputs.disko.nixosModules.default
-          inputs.jovian.nixosModules.default
-          inputs.preservation.nixosModules.default
-        ];
-      };
+      nixosModules = import ./modules { inherit lib; };
+      nixosConfigurations = import ./hosts { inherit self inputs lib; };
     };
 }
