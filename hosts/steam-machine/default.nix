@@ -30,6 +30,7 @@
     steamos = {
       useSteamOSConfig = true;
     };
+    decky-loader.enable = true;
   };
 
   # Use the systemd-boot EFI boot loader.
