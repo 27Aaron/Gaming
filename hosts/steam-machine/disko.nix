@@ -96,7 +96,7 @@
                   "--features"
                   "block-group-tree"
                 ];
-                mountpoint = "/persistent/home/aaron/Game";
+                mountpoint = "/home/aaron/Games";
                 mountOptions = [
                   "compress=zstd"
                   "noatime"
