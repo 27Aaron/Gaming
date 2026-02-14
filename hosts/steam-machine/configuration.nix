@@ -93,9 +93,13 @@
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       git
+      lazygit
+      ncdu
       just
       tree
+      btop
       fastfetch
+      nvtopPackages.amd
     ];
   };
 
