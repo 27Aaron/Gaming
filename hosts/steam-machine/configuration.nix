@@ -92,6 +92,8 @@
       "networkmanager"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
+      git
+      just
       tree
       fastfetch
     ];
