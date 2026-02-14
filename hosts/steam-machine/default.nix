@@ -41,7 +41,7 @@
           liberation_ttf
           wqy_zenhei
         ];
-      extraLibraries = pkgs: [ pkgs.xorg.libxcb ];
+      extraLibraries = pkgs: [ pkgs.libxcb ];
     };
     extest.enable = true;
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
