@@ -45,6 +45,7 @@ in
           directory = "/var/lib/private";
           mode = "0700";
         }
+        "/var/lib/decky-loader"
       ];
       files = [
         # auto-generated machine ID

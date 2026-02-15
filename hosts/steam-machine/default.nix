@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   inputs,
   ...
 }:
@@ -30,7 +31,22 @@
     steamos = {
       useSteamOSConfig = true;
     };
-    decky-loader.enable = true;
+    decky-loader = {
+      enable = true;
+      user = "aaron";
+      stateDir = "/var/lib/decky-loader";
+    };
+  };
+
+  # Create Steam CEF debugging file if it doesn't exist for Decky Loader.
+  systemd.services.steam-cef-debug = {
+    description = "Create Steam CEF debugging file";
+    serviceConfig = {
+      Type = "oneshot";
+      User = config.jovian.steam.user;
+      ExecStart = "/bin/sh -c 'mkdir -p ~/.steam/steam && [ ! -f ~/.steam/steam/.cef-enable-remote-debugging ] && touch ~/.steam/steam/.cef-enable-remote-debugging || true'";
+    };
+    wantedBy = [ "multi-user.target" ];
   };
 
   programs.steam = {
